@@ -1,0 +1,43 @@
+group 'com.github.yarosla.buildcache'
+version '1.0'
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+sourceCompatibility = 1.8
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'io.undertow:undertow-core:1.4.20.Final',
+            'io.undertow:undertow-servlet:1.4.20.Final',
+            'org.springframework:spring-context:4.3.12.RELEASE',
+            'org.springframework:spring-webmvc:4.3.12.RELEASE',
+            'com.fasterxml.jackson.core:jackson-databind:2.9.2',
+            'com.beust:jcommander:1.72',
+            'org.springframework.security:spring-security-web:4.2.3.RELEASE',
+            'org.springframework.security:spring-security-config:4.2.3.RELEASE',
+            'com.github.ben-manes.caffeine:caffeine:2.6.0',
+            'org.slf4j:slf4j-api:1.7.+',
+            'ch.qos.logback:logback-classic:1.1.+',
+            'org.slf4j:jcl-over-slf4j:1.7.+'
+}
+
+mainClassName = 'com.github.yarosla.buildcache.Main'
+
+task fatJar(type: Jar, dependsOn: ['compileJava', 'processResources']) {
+    from files(sourceSets.main.output.classesDirs)
+    from files(sourceSets.main.output.resourcesDir)
+    from configurations.runtime.asFileTree.files.collect { it.isDirectory() ? it : zipTree(it) }
+    exclude 'META-INF/*.SF', 'META-INF/*.RSA', 'META-INF/*.DSA'
+
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+}

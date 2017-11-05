@@ -1,0 +1,12 @@
+rootProject.name = 'mem-build-cache'
+
+buildCache {
+    remote(HttpBuildCache) {
+        url = 'http://localhost:8080/cache/'
+        push = true
+        credentials {
+            username = 'build-cache-user'
+            password = 'some-complicated-password'
+        }
+    }
+}
