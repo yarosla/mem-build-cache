@@ -15,15 +15,13 @@ repositories {
 }
 
 dependencies {
-    compile 'io.undertow:undertow-core:1.4.20.Final',
-            'io.undertow:undertow-servlet:1.4.20.Final',
-            'org.springframework:spring-context:4.3.12.RELEASE',
-            'org.springframework:spring-webmvc:4.3.12.RELEASE',
-            'com.fasterxml.jackson.core:jackson-databind:2.9.2',
+    compile 'org.springframework:spring-context:5.0.+',
+            'org.springframework:spring-webflux:5.0.+',
+            'io.netty:netty-buffer:4.1.+',
+            'io.projectreactor.ipc:reactor-netty:0.7.+',
+            'com.fasterxml.jackson.core:jackson-databind:2.9.+',
             'com.beust:jcommander:1.72',
-            'org.springframework.security:spring-security-web:4.2.3.RELEASE',
-            'org.springframework.security:spring-security-config:4.2.3.RELEASE',
-            'com.github.ben-manes.caffeine:caffeine:2.6.0',
+            'com.github.ben-manes.caffeine:caffeine:2.6.+',
             'org.slf4j:slf4j-api:1.7.+',
             'ch.qos.logback:logback-classic:1.1.+',
             'org.slf4j:jcl-over-slf4j:1.7.+'

@@ -56,6 +56,12 @@ Inspect cache statistics (in JSON format):
 
     curl -u build-cache-user:some-password http://localhost:8080/stats
 
+Technologies
+------------
+
+- Spring 5 WebFlux + Netty
+- Caffeine Cache
+
 Author
 ------
 

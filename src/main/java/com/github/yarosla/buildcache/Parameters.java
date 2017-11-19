@@ -3,6 +3,7 @@ package com.github.yarosla.buildcache;
 import com.beust.jcommander.Parameter;
 import org.springframework.util.StringUtils;
 
+@SuppressWarnings({"WeakerAccess", "FieldCanBeLocal"})
 public class Parameters {
 
     @Parameter(names = {"--debug", "-v"}, description = "Show debug log")
